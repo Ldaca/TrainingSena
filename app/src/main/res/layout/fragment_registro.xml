@@ -3,15 +3,223 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="16dp"
     tools:context=".fragments.RegistroFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment"
-        android:textSize="26sp"
-        android:gravity="center"
-        android:textColor="@color/design_default_color_error"/>
+        android:layout_height="wrap_content"
+        android:layout_marginTop="42dp"
+        app:cardCornerRadius="8dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?android:attr/selectableItemBackground">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:background="@color/hwid_auth_button_color_white">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:layout_marginHorizontal="8dp"
+                android:layout_marginBottom="16dp"
+                android:textAlignment="center"
+                android:text="@string/form" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginVertical="4dp"
+                android:baselineAligned="false">
+
+                <TextView
+                    android:id="@+id/label_marca"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="20"
+                    android:text="@string/marca" />
+
+                <Spinner
+                    android:id="@+id/marca"
+                    style="@android:style/Widget.Material.Spinner.Underlined"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="80"
+                    android:backgroundTint="@color/primary_text"
+                    android:popupBackground="@color/primary_text"
+                    android:spinnerMode="dropdown" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="4dp"
+                android:baselineAligned="false">
+
+                <TextView
+                    android:id="@+id/label_color"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="20"
+                    android:text="@string/color" />
+
+                <Spinner
+                    android:id="@+id/color"
+                    style="@android:style/Widget.Material.Spinner.Underlined"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="80"
+                    android:backgroundTint="@color/primary_text"
+                    android:popupBackground="@color/primary_text"
+                    android:spinnerMode="dropdown" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="4dp"
+                android:baselineAligned="false">
+
+                <TextView
+                    android:id="@+id/label_placa"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="20"
+                    android:layout_gravity="center_vertical"
+                    android:text="@string/placa"
+                    android:labelFor="@+id/placa"/>
+
+                <EditText
+                    android:id="@+id/placa"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="80"
+                    android:importantForAutofill="no"
+                    android:inputType="textCapWords"
+                    android:imeOptions="actionNext"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="4dp"
+                android:baselineAligned="false">
+
+                <TextView
+                    android:id="@+id/label_ciudad"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="20"
+                    android:text="@string/city" />
+
+                <Spinner
+                    android:id="@+id/ciudad"
+                    style="@android:style/Widget.Material.Spinner.Underlined"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="80"
+                    android:backgroundTint="@color/primary_text"
+                    android:popupBackground="@color/primary_text"
+                    android:spinnerMode="dropdown" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:baselineAligned="false">
+
+                <TextView
+                    android:id="@+id/label_modelo"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="20"
+                    android:layout_gravity="center_vertical"
+                    android:text="@string/modelo"
+                    android:labelFor="@+id/modelo"/>
+
+                <EditText
+                    android:id="@+id/modelo"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="80"
+                    android:importantForAutofill="no"
+                    android:inputType="textCapWords"
+                    android:imeOptions="actionNext"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="16dp"
+                android:baselineAligned="false">
+
+                <TextView
+                    android:id="@+id/label_fecha"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="20"
+                    android:layout_gravity="center_vertical"
+                    android:text="@string/f_soat"
+                    android:labelFor="@+id/fecha"/>
+
+                <EditText
+                    android:id="@+id/fecha"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="80"
+                    android:importantForAutofill="no"
+                    android:inputType="textCapWords"
+                    android:imeOptions="actionDone"/>
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/save"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/save"/>
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+    <LinearLayout
+        android:id="@+id/linear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_gravity="bottom"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/senasoft"
+            android:textColor="@color/colorPrimary"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/item_1"
+            android:textColor="@color/colorPrimary" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/item_2"
+            android:textColor="@color/colorPrimary" />
+    </LinearLayout>
 </FrameLayout>
