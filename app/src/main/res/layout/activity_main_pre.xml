@@ -11,8 +11,8 @@
         android:id="@+id/cardView"
         android:layout_width="120dp"
         android:layout_height="120dp"
-        android:clickable="true"
         android:focusable="true"
+        android:elevation="4dp"
         android:foreground="?android:attr/selectableItemBackground"
         app:cardCornerRadius="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -27,6 +27,7 @@
             android:layout_height="wrap_content"
             android:contentDescription="@string/logo"
             android:src="@drawable/splash" />
+
     </androidx.cardview.widget.CardView>
 
     <TextView
@@ -35,7 +36,9 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="32dp"
         android:text="@string/info"
-        android:textColor="@color/design_default_color_secondary"
+        android:textColor="#000"
+        android:textSize="16dp"
+        android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -47,6 +50,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/sign_up"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:background="@drawable/border_bottons"
         app:layout_constraintBottom_toTopOf="@id/linear"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -59,6 +65,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="ID-TOKEN Mode SignIn"
+        android:background="@drawable/border_bottons"
         app:layout_constraintBottom_toTopOf="@id/linear"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.508"
@@ -70,6 +77,7 @@
         android:id="@+id/sign2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/border_bottons"
         android:text="AuthorizationCode Mode SignIn"
         app:layout_constraintBottom_toTopOf="@id/linear"
         app:layout_constraintEnd_toEndOf="parent"
@@ -83,6 +91,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="SignOut"
+        android:background="@drawable/border_bottons"
         app:layout_constraintBottom_toTopOf="@id/linear"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -94,20 +103,21 @@
         android:id="@+id/linear"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:gravity="center"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.97">
+        app:layout_constraintVertical_bias="0.972">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/senasoft"
-            android:textColor="@color/colorPrimary"
+            android:textColor="#000"
             android:textSize="16sp"
             android:textStyle="bold" />
 
@@ -115,13 +125,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/item_1"
-            android:textColor="@color/colorPrimary" />
+            android:textColor="#000" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/item_2"
-            android:textColor="@color/colorPrimary" />
+            android:textColor="#000" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

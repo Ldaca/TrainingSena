@@ -3,11 +3,11 @@
     <item android:drawable="@android:color/background_light"/>
     <item android:width="82dp"
         android:height="82dp"
-        android:gravity="center"
+        android:gravity="center_vertical|center_horizontal"
         android:drawable="@drawable/ic_auto" />
     <item android:width="200dp"
         android:height="60dp"
-        android:top="110dp"
-        android:gravity="center"
+        android:top="108dp"
+        android:gravity="center_vertical|center_horizontal"
         android:drawable="@drawable/title"/>
 </layer-list>
