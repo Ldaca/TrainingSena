@@ -8,6 +8,8 @@
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
+        android:background="#E12196F3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
+
 </com.google.android.material.appbar.AppBarLayout>

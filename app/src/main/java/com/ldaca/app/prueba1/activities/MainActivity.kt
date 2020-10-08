@@ -12,6 +12,7 @@ import com.google.android.material.navigation.NavigationView
 import com.ldaca.app.prueba1.R
 import com.ldaca.app.prueba1.databinding.ActivityMainBinding
 import com.ldaca.app.prueba1.fragments.InicioFragment
+import com.ldaca.app.prueba1.fragments.PerfilFragment
 import com.ldaca.app.prueba1.fragments.RegistroFragment
 import com.ldaca.app.prueba1.fragments.ServiciosFragment
 
@@ -59,7 +60,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.id.inicio -> {
                 fragmentTransaction = true
                 fragment = InicioFragment()
-                actionBar.title = item.title
+                actionBar.title = "TramiAutos"
             }
             R.id.registro -> {
                 fragmentTransaction = true
@@ -73,7 +74,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             }
             R.id.perfil -> {
                 fragmentTransaction = true
-                fragment = InicioFragment()
+                fragment = PerfilFragment()
                 actionBar.title = item.title
             }
         }

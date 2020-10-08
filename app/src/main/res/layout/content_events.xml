@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ListadoEventos"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="0dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="340dp"
+            android:layout_height="2.5dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="40dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/border_bottons"/>
+
+        <LinearLayout
+            android:layout_width="340dp"
+            android:layout_gravity="center"
+            android:orientation="horizontal"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Marca"
+                android:textColor="#000"
+                android:textStyle="bold"
+                android:textSize="17sp"/>
+
+            <TextView
+                android:id="@+id/marca"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="BMW"
+                android:layout_marginLeft="20dp"
+                android:textColor="#000"
+                android:textSize="17sp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Placa"
+                android:layout_marginLeft="50dp"
+                android:textColor="#000"
+                android:textStyle="bold"
+                android:textSize="17sp"/>
+
+            <TextView
+                android:id="@+id/placa"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="AWM-123"
+                android:layout_marginLeft="20dp"
+                android:textColor="#000"
+                android:textSize="17sp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="340dp"
+            android:layout_gravity="center"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Renovación SOAP"
+                android:textColor="#000"
+                android:textStyle="bold"
+                android:textSize="17sp"/>
+
+            <TextView
+                android:id="@+id/soap"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2020-11-05"
+                android:layout_marginLeft="20dp"
+                android:textColor="#000"
+                android:textSize="17sp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="340dp"
+            android:layout_height="2.5dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/border_bottons"/>
+
+        <LinearLayout
+            android:layout_width="340dp"
+            android:layout_gravity="center"
+            android:orientation="horizontal"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Marca"
+                android:textColor="#000"
+                android:textStyle="bold"
+                android:textSize="17sp"/>
+
+            <TextView
+                android:id="@+id/marca2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="BMW"
+                android:layout_marginLeft="20dp"
+                android:textColor="#000"
+                android:textSize="17sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Placa"
+                android:layout_marginLeft="50dp"
+                android:textColor="#000"
+                android:textStyle="bold"
+                android:textSize="17sp"/>
+
+            <TextView
+                android:id="@+id/placa2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="AWM-123"
+                android:layout_marginLeft="20dp"
+                android:textColor="#000"
+                android:textSize="17sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="340dp"
+            android:layout_gravity="center"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Revisión Tecno-Mecánica"
+                android:textColor="#000"
+                android:textStyle="bold"
+                android:textSize="17sp"/>
+
+            <TextView
+                android:id="@+id/tecno_mecanica"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2020-01-02"
+                android:layout_marginLeft="20dp"
+                android:textColor="#000"
+                android:textSize="17sp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="340dp"
+            android:layout_height="2.5dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/border_bottons"/>
+
+        <LinearLayout
+            android:layout_width="340dp"
+            android:layout_gravity="center"
+            android:orientation="horizontal"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Marca"
+                android:textColor="#000"
+                android:textStyle="bold"
+                android:textSize="17sp"/>
+
+            <TextView
+                android:id="@+id/marca3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="BMW"
+                android:layout_marginLeft="20dp"
+                android:textColor="#000"
+                android:textSize="17sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Placa"
+                android:layout_marginLeft="50dp"
+                android:textColor="#000"
+                android:textStyle="bold"
+                android:textSize="17sp"/>
+
+            <TextView
+                android:id="@+id/placa3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="AWM-123"
+                android:layout_marginLeft="20dp"
+                android:textColor="#000"
+                android:textSize="17sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="340dp"
+            android:layout_gravity="center"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pago de Impuesto Vehicular"
+                android:textColor="#000"
+                android:textStyle="bold"
+                android:textSize="17sp"/>
+
+            <TextView
+                android:id="@+id/impuesto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2020-05-05"
+                android:layout_marginLeft="20dp"
+                android:textColor="#000"
+                android:textSize="17sp"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
