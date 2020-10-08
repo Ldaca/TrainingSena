@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+    <item android:id="@+id/inicio"
+        android:title="inicio"/>
+    <item android:id="@+id/registro"
+        android:title="Registro de vehiculos"/>
+    <item android:id="@+id/servicios"
+        android:title="Servicios"/>
+    <item android:id="@+id/perfil"
+        android:title="Mi perfil"/>
+    <item android:id="@+id/acerca"
+        android:title="Acerca de..."/>
+    <item android:id="@+id/salir"
+        android:title="Salir"/>
+</menu>
