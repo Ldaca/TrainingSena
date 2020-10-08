@@ -13,6 +13,10 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
+
+    <style name="AppDialog" parent="ThemeOverlay.AppCompat.Dialog.Alert">
+        <item name="colorAccent">@color/colorPrimary</item>
+    </style>
     
     <style name="Splash" parent="AppTheme">
         <item name="android:windowBackground">@drawable/splash</item>
