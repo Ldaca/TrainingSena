@@ -184,6 +184,15 @@
                     android:importantForAutofill="no"
                     android:inputType="textCapWords"
                     android:imeOptions="actionDone"/>
+
+                <ImageView
+                    android:id="@+id/ib_get_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_date_range"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginEnd="12dp"
+                    android:contentDescription="@string/logo" />
             </LinearLayout>
 
             <Button
