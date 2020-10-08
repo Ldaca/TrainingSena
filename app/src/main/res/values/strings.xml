@@ -19,6 +19,12 @@
     <string name="f_soat">F. Soat:</string>
     <string name="modelo">Modelo:</string>
     <string name="save">Guardar</string>
+    <string name="home">inicio</string>
+    <string name="registry">Registro de vehiculos</string>
+    <string name="services">Servicios</string>
+    <string name="profile">Mi perfil</string>
+    <string name="about">Acerca de...</string>
+    <string name="exit">Salir</string>
 
 
     <string-array name="marcas">
@@ -27,7 +33,7 @@
         <item>ALFA ROMEO</item>
     </string-array>
 
-    <string-array name="color">
+    <string-array name="colores">
         <item>AMARILLO</item>
         <item>AZULBEIGE</item>
         <item>BLANCO</item>
@@ -41,7 +47,7 @@
         <item>VERDE</item>
     </string-array>
 
-    <string-array name="ciudad">
+    <string-array name="ciudades">
         <item>CARTAGO</item>
         <item>CALI</item>
         <item>BOGOTÁ</item>

@@ -3,15 +3,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
     <item android:id="@+id/inicio"
-        android:title="inicio"/>
+        android:title="@string/home"
+        android:checkable="true"/>
     <item android:id="@+id/registro"
-        android:title="Registro de vehiculos"/>
+        android:title="@string/registry"
+        android:checkable="true"/>
     <item android:id="@+id/servicios"
-        android:title="Servicios"/>
+        android:title="@string/services"
+        android:checkable="true"/>
     <item android:id="@+id/perfil"
-        android:title="Mi perfil"/>
+        android:title="@string/profile"
+        android:checkable="true"/>
     <item android:id="@+id/acerca"
-        android:title="Acerca de..."/>
+        android:title="@string/about" />
     <item android:id="@+id/salir"
-        android:title="Salir"/>
+        android:title="@string/exit"/>
 </menu>
