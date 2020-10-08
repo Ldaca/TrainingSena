@@ -13,7 +13,7 @@ class SplashActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         try {
-            SystemClock.sleep(10000)
+            SystemClock.sleep(1000)
         } catch (e: Exception) {
             Log.w(TAG, "Error en el retardo")
         }

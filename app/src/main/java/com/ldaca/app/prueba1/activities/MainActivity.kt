@@ -27,6 +27,12 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setToolbar()
+        initDrawer();
+    }
+
+    private fun initDrawer() {
+        val menu = binding.navView.menu
+        val oldItem = menu.getItem(1)
         binding.navView.setNavigationItemSelectedListener(this)
         val toggle = ActionBarDrawerToggle(
             this,
@@ -37,6 +43,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         )
         binding.drawer.addDrawerListener(toggle)
         toggle.syncState()
+        selectedItem(oldItem)
+        oldItem.isChecked = true
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {

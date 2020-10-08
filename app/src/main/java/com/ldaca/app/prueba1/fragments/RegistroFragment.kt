@@ -1,60 +1,52 @@
 package com.ldaca.app.prueba1.fragments
 
+import android.content.Context
+import android.content.pm.ActivityInfo
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
+import android.widget.Toast
+import androidx.fragment.app.Fragment
 import com.ldaca.app.prueba1.R
-
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+import com.ldaca.app.prueba1.databinding.FragmentRegistroBinding
+import com.ldaca.app.prueba1.databinding.ToolbarHomeBinding
 
 /**
- * A simple [Fragment] subclass.
- * Use the [RegistroFragment.newInstance] factory method to
- * create an instance of this fragment.
+ * A simple [Fragment] subclass..
  */
 class RegistroFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    private lateinit var binding: FragmentRegistroBinding
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        activity?.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_registro, container, false)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        binding = FragmentRegistroBinding.inflate(layoutInflater, container, false)
+
+        // Configuracion del Spinner de marca
+        val adapterMarca = ArrayAdapter.createFromResource(requireActivity(), R.array.marcas, R.layout.item_spinner)
+        adapterMarca.setDropDownViewResource(R.layout.spinner_dropdown_item)
+        binding.marca.adapter = adapterMarca
+
+        // Configuracion del Spinner de color
+        val adapterColor = ArrayAdapter.createFromResource(requireActivity(), R.array.colores, R.layout.item_spinner)
+        adapterColor.setDropDownViewResource(R.layout.spinner_dropdown_item)
+        binding.color.adapter = adapterColor
+
+        // Configuracion del Spinner de ciudad
+        val adapterCiudad = ArrayAdapter.createFromResource(requireActivity(), R.array.ciudades, R.layout.item_spinner)
+        adapterCiudad.setDropDownViewResource(R.layout.spinner_dropdown_item)
+        binding.ciudad.adapter = adapterCiudad
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment RegistroFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            RegistroFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    override fun onDetach() {
+        activity?.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED
+        super.onDetach()
     }
 }

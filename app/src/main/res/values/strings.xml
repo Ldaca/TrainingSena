@@ -1,7 +1,7 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">TramiAutos</string>
-    <string name="info">Trami autos, somos la compañia que dedica el tiempo para personalizar, solventar, ajustar, resgitrar todo con respecto a su vehiculo,
-        sabemos la importancia de tratar con el y lograr darle buenos resultados, comience ahora</string>
+    <string name="info" tools:ignore="Typos">dfghjkl dfghjkl fghjkl dfghjkl dfghjkl fghjkl fghjkl ertyuio dfghjkl cvbnm,
+        dfghjkl fghjkl jfghjklñ ghjm,klñ edfghjkl dfghjk wertyui edfgbnmkhdfghj</string>
     <string name="sign_up">REGISTRARSE</string>
     <string name="senasoft">SENASOFT 2020</string>
     <string name="item_1">Integrante 1</string>
@@ -11,4 +11,52 @@
     <string name="closeDrawer">cerrar menu lateral</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="city">Ciudad:</string>
+    <string name="placa">Placa:</string>
+    <string name="color">Color:</string>
+    <string name="marca">Marca:</string>
+    <string name="form">Formulario</string>
+    <string name="f_soat">F. Soat:</string>
+    <string name="modelo">Modelo:</string>
+    <string name="save">Guardar</string>
+    <string name="home">inicio</string>
+    <string name="registry">Registro de vehiculos</string>
+    <string name="services">Servicios</string>
+    <string name="profile">Mi perfil</string>
+    <string name="about" tools:ignore="TypographyEllipsis">Acerca de...</string>
+    <string name="exit">Salir</string>
+    <string name="select">Seleccione los servicios</string>
+    <string name="renovacion">Renovación SOAT</string>
+    <string name="revision">Revisión Tecno-mecanica</string>
+    <string name="pago">Pago Impuesto Vehicular</string>
+    <string name="pico_y_placa">Pico y Placa</string>
+
+
+    <string-array name="marcas">
+        <item>AUDI</item>
+        <item>FIAT</item>
+        <item>ALFA ROMEO</item>
+    </string-array>
+
+    <string-array name="colores">
+        <item>AMARILLO</item>
+        <item>AZULBEIGE</item>
+        <item>BLANCO</item>
+        <item>CAFÉ</item>
+        <item>GRIS</item>
+        <item>MARRON</item>
+        <item>MORADO</item>
+        <item>NARANJA</item>
+        <item>NEGRO</item>
+        <item>ROJO</item>
+        <item>VERDE</item>
+    </string-array>
+
+    <string-array name="ciudades">
+        <item>CARTAGO</item>
+        <item>CALI</item>
+        <item>BOGOTÁ</item>
+        <item>MEDELLÍN</item>
+        <item>BARRANQUILLA</item>
+    </string-array>
 </resources>
