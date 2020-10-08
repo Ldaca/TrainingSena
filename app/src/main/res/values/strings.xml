@@ -1,6 +1,6 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">TramiAutos</string>
-    <string name="info">dfghjkl dfghjkl fghjkl dfghjkl dfghjkl fghjkl fghjkl ertyuio dfghjkl cvbnm,
+    <string name="info" tools:ignore="Typos">dfghjkl dfghjkl fghjkl dfghjkl dfghjkl fghjkl fghjkl ertyuio dfghjkl cvbnm,
         dfghjkl fghjkl jfghjklñ ghjm,klñ edfghjkl dfghjk wertyui edfgbnmkhdfghj</string>
     <string name="sign_up">REGISTRARSE</string>
     <string name="senasoft">SENASOFT 2020</string>
@@ -23,8 +23,13 @@
     <string name="registry">Registro de vehiculos</string>
     <string name="services">Servicios</string>
     <string name="profile">Mi perfil</string>
-    <string name="about">Acerca de...</string>
+    <string name="about" tools:ignore="TypographyEllipsis">Acerca de...</string>
     <string name="exit">Salir</string>
+    <string name="select">Seleccione los servicios</string>
+    <string name="renovacion">Renovación SOAT</string>
+    <string name="revision">Revisión Tecno-mecanica</string>
+    <string name="pago">Pago Impuesto Vehicular</string>
+    <string name="pico_y_placa">Pico y Placa</string>
 
 
     <string-array name="marcas">
