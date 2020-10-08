@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
+    android:background="#d7d7d7"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragments.ServiciosFragment">
 
@@ -123,6 +124,16 @@
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>
+
+    <LinearLayout
+        android:id="@+id/layout3"
+        android:layout_width="320dp"
+        android:layout_height="3dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="210dp"
+        android:background="@drawable/border_bottons"
+        android:orientation="horizontal" />
+
     <LinearLayout
         android:id="@+id/linear"
         android:layout_width="match_parent"
@@ -136,20 +147,22 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/senasoft"
-            android:textColor="@color/colorPrimary"
-            android:textSize="16sp"
+            android:textColor="#000"
+            android:textSize="20sp"
             android:textStyle="bold" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/item_1"
-            android:textColor="@color/colorPrimary" />
+            android:textSize="18sp"
+            android:textColor="#000"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/item_2"
-            android:textColor="@color/colorPrimary" />
+            android:textSize="18sp"
+            android:textColor="#000" />
     </LinearLayout>
 </FrameLayout>

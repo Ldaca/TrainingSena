@@ -32,7 +32,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     private fun initDrawer() {
         val menu = binding.navView.menu
-        val oldItem = menu.getItem(1)
+        val oldItem = menu.getItem(0)
         binding.navView.setNavigationItemSelectedListener(this)
         val toggle = ActionBarDrawerToggle(
             this,

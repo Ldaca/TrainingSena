@@ -1,7 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">TramiAutos</string>
-    <string name="info" tools:ignore="Typos">dfghjkl dfghjkl fghjkl dfghjkl dfghjkl fghjkl fghjkl ertyuio dfghjkl cvbnm,
-        dfghjkl fghjkl jfghjklñ ghjm,klñ edfghjkl dfghjk wertyui edfgbnmkhdfghj</string>
+    <string name="info" tools:ignore="Typos">TramiAutos es la compañia que aporta sobre el estado, ajustes, arreglos, seguridad, detalles decorativos, y el mejor cuidado para usted y su vehiculo, venga ya, no se lo pierda hoy.</string>
     <string name="sign_up">REGISTRARSE</string>
     <string name="senasoft">SENASOFT 2020</string>
     <string name="item_1">Integrante 1</string>
@@ -19,7 +18,7 @@
     <string name="f_soat">F. Soat:</string>
     <string name="modelo">Modelo:</string>
     <string name="save">Guardar</string>
-    <string name="home">inicio</string>
+    <string name="home">Inicio</string>
     <string name="registry">Registro de vehiculos</string>
     <string name="services">Servicios</string>
     <string name="profile">Mi perfil</string>

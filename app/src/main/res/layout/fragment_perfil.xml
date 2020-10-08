@@ -4,12 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#d7d7d7"
     tools:context=".fragments.PerfilFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:paddingTop="50dp"
+        android:paddingTop="0dp"
         android:layout_height="match_parent">
 
         <EditText
@@ -36,7 +37,7 @@
             android:id="@+id/linear1"
             android:layout_width="300dp"
             android:layout_height="40dp"
-            android:layout_marginTop="120dp"
+            android:layout_marginTop="100dp"
             android:orientation="horizontal"
             app:layout_constraintBottom_toTopOf="@+id/email"
             app:layout_constraintEnd_toEndOf="parent"
@@ -71,7 +72,7 @@
             android:id="@+id/email"
             android:layout_width="300dp"
             android:layout_height="40dp"
-            android:layout_marginTop="240dp"
+            android:layout_marginTop="210dp"
             android:background="@drawable/border_bottons"
             android:hint="Correo Electrónico"
             android:inputType="textEmailAddress"
@@ -93,7 +94,7 @@
             android:id="@+id/linear2"
             android:layout_width="300dp"
             android:layout_height="40dp"
-            android:layout_marginTop="315dp"
+            android:layout_marginTop="280dp"
             android:orientation="horizontal"
             app:layout_constraintBottom_toTopOf="@+id/guardar"
             app:layout_constraintEnd_toEndOf="parent"

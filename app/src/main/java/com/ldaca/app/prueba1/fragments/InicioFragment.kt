@@ -36,6 +36,10 @@ class InicioFragment : Fragment() {
 
         list_eventos.add(Eventos("AUDI", "FGL-548", "20/12/2020", "05/10/2020", "01/01/2021"))
 
+        list_eventos.add(Eventos("BMW", "AAQ-210", "20/12/2020", "05/10/2020", "01/01/2021"))
+
+        list_eventos.add(Eventos("Ferrari", "WXL-708", "20/12/2020", "05/10/2020", "01/01/2021"))
+
         val adapter = adapterEventos(list_eventos)
 
         recyclerView_eventos.adapter = adapter

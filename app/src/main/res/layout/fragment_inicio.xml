@@ -4,6 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#ffffff"
     tools:context=".fragments.InicioFragment">
 
     <!-- TODO: Update blank fragment layout -->
@@ -14,57 +15,64 @@
         android:textSize="20sp"
         android:textColor="#000"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="5dp"
         android:textStyle="bold"
         android:text="Próximos Eventos"/>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_events"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="90dp"
-        android:orientation="vertical"/>
-
     <LinearLayout
-        android:id="@+id/layout3"
-        android:layout_width="320dp"
-        android:layout_height="3dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="230dp"
-        android:background="@drawable/border_bottons"
-        android:orientation="horizontal" />
-
-    <LinearLayout
-        android:id="@+id/linear"
         android:layout_width="match_parent"
-        android:layout_height="120dp"
-        android:gravity="center"
-        android:layout_gravity="center"
-        android:layout_marginTop="290dp"
+        android:layout_height="540dp"
         android:orientation="vertical">
 
-        <TextView
-            android:layout_width="wrap_content"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_events"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/senasoft"
-            android:textColor="#000"
-            android:textSize="20sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/item_1"
-            android:textSize="18sp"
-            android:textColor="#000" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/item_2"
-            android:textSize="18sp"
-            android:textColor="#000" />
+            android:layout_marginTop="40dp"
+            android:orientation="vertical"/>
 
     </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout3"
+            android:layout_width="280dp"
+            android:layout_height="3dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="220dp"
+            android:background="@drawable/border_bottons"
+            android:orientation="horizontal" />
+
+        <LinearLayout
+            android:id="@+id/linear"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:layout_marginTop="270dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/senasoft"
+                android:textColor="#000"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/item_1"
+                android:textSize="18sp"
+                android:textColor="#000" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/item_2"
+                android:textSize="18sp"
+                android:textColor="#000" />
+
+        </LinearLayout>
 
 </FrameLayout>
