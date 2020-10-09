@@ -2,6 +2,7 @@ package com.ldaca.app.prueba1.fragments
 
 import android.app.DatePickerDialog
 import android.content.Context
+import android.content.SharedPreferences
 import android.content.pm.ActivityInfo
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -20,7 +21,6 @@ import com.ldaca.app.prueba1.models.DateString
 class RegistroFragment : Fragment() {
     private lateinit var binding: FragmentRegistroBinding
     private var dateSoat = DateString()
-
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
