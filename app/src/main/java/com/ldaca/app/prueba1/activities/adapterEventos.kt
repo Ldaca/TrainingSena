@@ -1,13 +1,11 @@
 package com.ldaca.app.prueba1.activities
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.ldaca.app.prueba1.R
-import com.ldaca.app.prueba1.databinding.FragmentInicioBinding
 
 class adapterEventos (var list: ArrayList<Eventos>) : RecyclerView.Adapter<adapterEventos.ViewHolder>(){
 
