@@ -31,6 +31,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="MissingConstraints"
+            android:imeOptions="actionNext"
             android:focusable="true" />
 
         <LinearLayout
@@ -57,7 +58,8 @@
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
                 android:textColorHint="#000"
-                android:focusable="false" />
+                android:focusable="false"
+                android:imeOptions="actionNext"/>
 
             <ImageView
                 android:layout_width="50dp"
@@ -88,7 +90,8 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0"
             tools:ignore="MissingConstraints"
-            android:focusable="true" />
+            android:focusable="true"
+            android:imeOptions="actionNext"/>
 
         <LinearLayout
             android:id="@+id/linear2"
@@ -114,7 +117,8 @@
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
                 android:textColorHint="#000"
-                android:focusable="false" />
+                android:focusable="false"
+                android:imeOptions="actionDone"/>
 
             <ImageView
                 android:layout_width="50dp"
