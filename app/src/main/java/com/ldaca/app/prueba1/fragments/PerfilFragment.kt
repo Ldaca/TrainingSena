@@ -1,6 +1,8 @@
 package com.ldaca.app.prueba1.fragments
 
 import android.app.Activity
+import android.app.DatePickerDialog
+import android.content.ContentValues
 import android.content.Context
 import android.content.pm.ActivityInfo
 import android.os.Bundle
@@ -8,17 +10,25 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.DatePicker
 import android.widget.Toast
 import com.ldaca.app.prueba1.R
+import com.ldaca.app.prueba1.activities.sqlite
 import com.ldaca.app.prueba1.databinding.FragmentPerfilBinding
 import com.ldaca.app.prueba1.databinding.FragmentRegistroBinding
+import com.ldaca.app.prueba1.models.DateString
+import kotlin.properties.Delegates
 
 class PerfilFragment : Fragment() {
 
     private lateinit var binding: FragmentPerfilBinding
+    private var dateNacimientoLicencia = DateString()
+    private var seleccionFecha:Int? = 0
 
-    override fun onAttach(activity: Activity) {
-        super.onAttach(activity)
+    val db = sqlite(activity, "tramiautos", null, 1)
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
         activity?.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
     }
 
@@ -32,10 +42,49 @@ class PerfilFragment : Fragment() {
                     "Email = ${binding.email.text} \n Vencimiento Licencia = ${binding.licenciaFecha.text} ", Toast.LENGTH_LONG).show()
         }
 
+        //Configuracion del listener en el editext de nacimiento
+        binding.nacimiento.setOnClickListener {
+            seleccionFecha = 1
+            getDate()
+        }
+
+        //Configuracion del listener en el editext de licencia
+        binding.licenciaFecha.setOnClickListener {
+            seleccionFecha = 2
+            getDate()
+        }
+
         return binding.root
     }
 
+    private fun getDate() {
+        val showDate = DatePickerDialog(context!!, R.style.AppDialog, { _: DatePicker?, year: Int, month: Int, dayOfMonth: Int ->
+            dateNacimientoLicencia.setDate(dayOfMonth, month + 1, year)
+            if(seleccionFecha==1){
+                binding.nacimiento.setText(dateNacimientoLicencia.displayDate)
+            }else{
+                binding.licenciaFecha.setText(dateNacimientoLicencia.displayDate)
+            }
+        },
+            dateNacimientoLicencia.year.toInt(),
+            dateNacimientoLicencia.month.toInt(),
+            dateNacimientoLicencia.day.toInt()
+        )
+        showDate.show()
+    }
 
+    private fun guardarDatos(){
+        val con = db.writableDatabase
+
+        val values = ContentValues().apply {
+            put("Nombres", "Laura Sanchez")
+        }
+
+        con.insert("perfil", null, values)
+
+        con.close()
+
+    }
 
     companion object {
         /**
