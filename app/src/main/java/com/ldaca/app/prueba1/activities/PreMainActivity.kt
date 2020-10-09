@@ -11,10 +11,9 @@ import com.ldaca.app.prueba1.databinding.ActivityMainPreBinding
 
 class PreMainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainPreBinding
-//    private val authParams : HuaweiIdAuthParams = HuaweiIdAuthParamsHelper(HuaweiIdAuthParams.DEFAULT_AUTH_REQUEST_PARAM)
-//        .setIdToken().createParams()
-//    private val service : HuaweiIdAuthService = HuaweiIdAuthManager.getService(this, authParams)
-
+    private val authParams : HuaweiIdAuthParams by lazy { HuaweiIdAuthParamsHelper(HuaweiIdAuthParams.DEFAULT_AUTH_REQUEST_PARAM)
+        .setIdToken().createParams() }
+    private val service : HuaweiIdAuthService by lazy { HuaweiIdAuthManager.getService(this@PreMainActivity, authParams) }
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,7 +25,7 @@ class PreMainActivity : AppCompatActivity() {
             startActivity(intent)
         }
         binding.sign1.setOnClickListener {
-//            startActivityForResult(service.signInIntent, 8888)
+            startActivityForResult(service.signInIntent, 8888)
         }
     }
 }

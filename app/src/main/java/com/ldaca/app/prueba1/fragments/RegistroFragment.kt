@@ -31,29 +31,17 @@ class RegistroFragment : Fragment() {
         binding = FragmentRegistroBinding.inflate(layoutInflater, container, false)
 
         // Configuracion del Spinner de marca
-        val adapterMarca = ArrayAdapter.createFromResource(
-            requireActivity(),
-            R.array.marcas,
-            R.layout.item_spinner
-        )
+        val adapterMarca = ArrayAdapter(requireActivity(),R.layout.item_spinner, getMarcas())
         adapterMarca.setDropDownViewResource(R.layout.spinner_dropdown_item)
         binding.marca.adapter = adapterMarca
 
         // Configuracion del Spinner de color
-        val adapterColor = ArrayAdapter.createFromResource(
-            requireActivity(),
-            R.array.colores,
-            R.layout.item_spinner
-        )
+        val adapterColor = ArrayAdapter(requireActivity(),R.layout.item_spinner, getColores())
         adapterColor.setDropDownViewResource(R.layout.spinner_dropdown_item)
         binding.color.adapter = adapterColor
 
         // Configuracion del Spinner de ciudad
-        val adapterCiudad = ArrayAdapter.createFromResource(
-            requireActivity(),
-            R.array.ciudades,
-            R.layout.item_spinner
-        )
+        val adapterCiudad = ArrayAdapter(requireActivity(),R.layout.item_spinner, getColores())
         adapterCiudad.setDropDownViewResource(R.layout.spinner_dropdown_item)
         binding.ciudad.adapter = adapterCiudad
 
@@ -67,6 +55,45 @@ class RegistroFragment : Fragment() {
             getDate()
         }
         return binding.root
+    }
+
+    private fun getMarcas(isDB: Boolean = false): List<String> {
+        val list = if (isDB) {
+            getMarcasFromDB()
+        } else {
+            resources.getStringArray(R.array.marcas).toList()
+        }
+        return list
+    }
+
+    private fun getColores(isDB: Boolean = false): List<String> {
+        val list = if (isDB) {
+            getColoresFromDB()
+        } else {
+            resources.getStringArray(R.array.colores).toList()
+        }
+        return list
+    }
+
+    private fun getCiudades(isDB: Boolean = false): List<String> {
+        val list = if (isDB) {
+            getCiudadesFromDB()
+        } else {
+            resources.getStringArray(R.array.ciudades).toList()
+        }
+        return list
+    }
+
+    private fun getMarcasFromDB(): List<String>{
+        return emptyList<String>().toMutableList()
+    }
+
+    private fun getColoresFromDB(): List<String> {
+        return emptyList<String>().toMutableList()
+    }
+
+    private fun getCiudadesFromDB(): List<String> {
+        return emptyList<String>().toMutableList()
     }
 
     private fun getDate() {
