@@ -11,8 +11,10 @@ import android.widget.ArrayAdapter
 import android.widget.DatePicker
 import androidx.fragment.app.Fragment
 import com.ldaca.app.prueba1.R
+import com.ldaca.app.prueba1.activities.sqlite
 import com.ldaca.app.prueba1.databinding.FragmentRegistroBinding
 import com.ldaca.app.prueba1.models.DateString
+import java.util.ArrayList
 
 /**
  * A simple [Fragment] subclass..
@@ -20,6 +22,8 @@ import com.ldaca.app.prueba1.models.DateString
 class RegistroFragment : Fragment() {
     private lateinit var binding: FragmentRegistroBinding
     private var dateSoat = DateString()
+
+    private lateinit var db: sqlite
 
 
     override fun onAttach(context: Context) {
@@ -41,7 +45,7 @@ class RegistroFragment : Fragment() {
         binding.color.adapter = adapterColor
 
         // Configuracion del Spinner de ciudad
-        val adapterCiudad = ArrayAdapter(requireActivity(),R.layout.item_spinner, getColores())
+        val adapterCiudad = ArrayAdapter(requireActivity(),R.layout.item_spinner, getCiudades())
         adapterCiudad.setDropDownViewResource(R.layout.spinner_dropdown_item)
         binding.ciudad.adapter = adapterCiudad
 
@@ -54,6 +58,10 @@ class RegistroFragment : Fragment() {
         binding.ibGetDate.setOnClickListener {
             getDate()
         }
+
+        //Inicializamos la base de datos
+        db = sqlite(activity, "tramiautos", null, 1)
+
         return binding.root
     }
 
@@ -85,15 +93,48 @@ class RegistroFragment : Fragment() {
     }
 
     private fun getMarcasFromDB(): List<String>{
-        return emptyList<String>().toMutableList()
+
+        var list_marcas = ArrayList<String>()
+
+        var con = db.readableDatabase
+
+        var cursor = con.rawQuery("SELECT * FROM tbl_marcautos", null)
+
+        while (cursor.moveToNext()){
+            list_marcas.add(cursor.getString(1))
+        }
+
+        return list_marcas
     }
 
     private fun getColoresFromDB(): List<String> {
-        return emptyList<String>().toMutableList()
+
+        var list_colores = ArrayList<String>()
+
+        var con = db.readableDatabase
+
+        var cursor = con.rawQuery("SELECT * FROM tbl_colores", null)
+
+        while (cursor.moveToNext()){
+            list_colores.add(cursor.getString(1))
+        }
+
+        return list_colores
     }
 
     private fun getCiudadesFromDB(): List<String> {
-        return emptyList<String>().toMutableList()
+
+        var list_ciudades = ArrayList<String>()
+
+        var con = db.readableDatabase
+
+        var cursor = con.rawQuery("SELECT * FROM tbl_ciudades", null)
+
+        while (cursor.moveToNext()){
+            list_ciudades.add(cursor.getString(1))
+        }
+
+        return list_ciudades
     }
 
     private fun getDate() {
