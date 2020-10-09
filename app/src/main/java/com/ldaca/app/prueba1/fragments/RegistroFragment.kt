@@ -1,6 +1,7 @@
 package com.ldaca.app.prueba1.fragments
 
 import android.app.DatePickerDialog
+import android.content.ContentValues
 import android.content.Context
 import android.content.pm.ActivityInfo
 import android.os.Bundle
@@ -9,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.DatePicker
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.ldaca.app.prueba1.R
 import com.ldaca.app.prueba1.activities.sqlite
@@ -24,6 +26,7 @@ class RegistroFragment : Fragment() {
     private var dateSoat = DateString()
 
     private lateinit var db: sqlite
+    private lateinit var placa_format:String
 
 
     override fun onAttach(context: Context) {
@@ -62,7 +65,37 @@ class RegistroFragment : Fragment() {
         //Inicializamos la base de datos
         db = sqlite(activity, "tramiautos", null, 1)
 
+        //Guadar registro de vehiculos
+        binding.save.setOnClickListener {
+            guardarVehiculos()
+        }
+
         return binding.root
+    }
+
+    private fun guardarVehiculos(){
+        var con =  db.writableDatabase
+
+        if(binding.placa.text.isNotEmpty() && binding.modelo.text.isNotEmpty() && binding.fecha.text.isNotEmpty()){
+            var values = ContentValues().apply {
+                put("Marca", binding.marca.selectedItem.toString())
+                put("Color", binding.color.selectedItem.toString())
+                put("Placa", binding.placa.text.toString())
+                put("Ciudad",binding.ciudad.selectedItem.toString())
+                put("Modelo", binding.modelo.text.toString())
+                put("FechaSoat", binding.fecha.text.toString())
+            }
+
+            var insertar = con.insert("tbl_regautos", null, values)
+
+            if(insertar>0){
+                Toast.makeText(activity, "REGISTRO EXITOSO", Toast.LENGTH_SHORT).show()
+            }
+            con.close()
+
+        }else{
+            Toast.makeText(activity, "Todos los campos son obligatorios", Toast.LENGTH_SHORT).show()
+        }
     }
 
     private fun getMarcas(isDB: Boolean = false): List<String> {

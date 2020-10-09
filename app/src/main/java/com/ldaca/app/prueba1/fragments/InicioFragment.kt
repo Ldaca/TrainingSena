@@ -12,8 +12,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.ldaca.app.prueba1.R
 import com.ldaca.app.prueba1.activities.Eventos
 import com.ldaca.app.prueba1.activities.adapterEventos
+import com.ldaca.app.prueba1.activities.sqlite
 import com.ldaca.app.prueba1.databinding.FragmentInicioBinding
 import java.util.prefs.Preferences
+import kotlin.math.E
 
 
 /**
@@ -27,22 +29,21 @@ class InicioFragment : Fragment() {
     private lateinit var recyclerView_eventos: RecyclerView
     private lateinit var list_eventos:ArrayList<Eventos>
 
-
+    private lateinit var db:sqlite
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
         binding = FragmentInicioBinding.inflate(layoutInflater, container, false)
+
+        //Iniciamos la base de datos
+        db = sqlite(activity, "tramiautos", null, 1)
 
         recyclerView_eventos = binding.recyclerEvents
         recyclerView_eventos.layoutManager = LinearLayoutManager(activity, RecyclerView.VERTICAL, false)
 
         list_eventos = ArrayList()
 
-        list_eventos.add(Eventos("AUDI", "FGL-548", "20/12/2020", "05/10/2020", "01/01/2021"))
-
-        list_eventos.add(Eventos("BMW", "AAQ-210", "20/12/2020", "05/10/2020", "01/01/2021"))
-
-        list_eventos.add(Eventos("Ferrari", "WXL-708", "20/12/2020", "05/10/2020", "01/01/2021"))
+        consultarDatos()
 
         val adapter = adapterEventos(list_eventos)
 
@@ -50,6 +51,17 @@ class InicioFragment : Fragment() {
 
         return binding.root
 
+    }
+
+    private fun consultarDatos(){
+        var con = db.readableDatabase
+
+        var cursor = con.rawQuery("SELECT * FROM tbl_regautos ORDER BY Id DESC", null)
+
+        while(cursor.moveToNext()){
+            list_eventos.add(Eventos(cursor.getString(1), cursor.getString(3), cursor.getString(6), "00/00/0000", "00/00/0000"))
+        }
+        con.close()
     }
 
     companion object {
