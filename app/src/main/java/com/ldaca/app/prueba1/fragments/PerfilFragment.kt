@@ -5,7 +5,9 @@ import android.app.DatePickerDialog
 import android.content.ContentValues
 import android.content.Context
 import android.content.pm.ActivityInfo
+import android.database.sqlite.SQLiteDatabase
 import android.os.Bundle
+import android.os.strictmode.SqliteObjectLeakedViolation
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -24,8 +26,10 @@ class PerfilFragment : Fragment() {
     private lateinit var binding: FragmentPerfilBinding
     private var dateNacimientoLicencia = DateString()
     private var seleccionFecha:Int? = 0
+    private lateinit var idPerfil:String
+    private var ExistePerfil:Int? = 0
 
-    val db = sqlite(activity, "tramiautos", null, 1)
+    val db:sqlite? = sqlite(activity, "tramiautos", null, 1)
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -37,9 +41,12 @@ class PerfilFragment : Fragment() {
         binding = FragmentPerfilBinding.inflate(layoutInflater, container, false)
 
 
+        //Consultamos los datos que el usuario ha registrado
+        //consultarDatos()
+
+        //Guardamos los datos que son ingresados por el usuario, si existe un perfil se actualizan los datos
         binding.guardar.setOnClickListener {
-            Toast.makeText(activity, "Nombres y Apellidos = ${binding.nombres.text} \n Fecha Nacimiento = ${binding.nacimiento.text} \n " +
-                    "Email = ${binding.email.text} \n Vencimiento Licencia = ${binding.licenciaFecha.text} ", Toast.LENGTH_LONG).show()
+            guardarDatos()
         }
 
         //Configuracion del listener en el editext de nacimiento
@@ -74,16 +81,69 @@ class PerfilFragment : Fragment() {
     }
 
     private fun guardarDatos(){
-        val con = db.writableDatabase
+        var con:SQLiteDatabase? = db!!.writableDatabase
 
-        val values = ContentValues().apply {
-            put("Nombres", "Laura Sanchez")
+        if(binding.nombres.text.isNotEmpty() && binding.nacimiento.text.isNotEmpty() && binding.email.text.isNotEmpty() && binding.licenciaFecha.text.isNotEmpty()){
+
+            val values = ContentValues().apply {
+                put("Nombres", binding.nombres.text.toString())
+                put("FechaNacimiento", binding.nacimiento.text.toString())
+                put("Email", binding.email.text.toString())
+                put("FechaLicencia", binding.licenciaFecha.text.toString())
+            }
+
+            var insertar = con!!.insert("perfil", null, values)
+
+            if(insertar>0){
+                Toast.makeText(activity, "NUEVO REGISTRO GUARDADO.", Toast.LENGTH_LONG).show()
+            }
+
+            con.close()
+        }else{
+            Toast.makeText(activity,"Todos los campos son obligatorios",Toast.LENGTH_SHORT).show()
         }
+    }
 
-        con.insert("perfil", null, values)
+    private fun consultarDatos(){
+        var con: SQLiteDatabase? = db!!.readableDatabase
 
-        con.close()
+        var cursor = con?.rawQuery("SELECT * FROM perfil", null)
 
+        ExistePerfil = cursor!!.count
+
+        Toast.makeText(activity, "Total = $ExistePerfil", Toast.LENGTH_LONG).show()
+
+        if(ExistePerfil!!>0){
+            while(cursor.moveToNext()){
+                binding.nombres.setText(cursor.getString(1))
+                binding.nacimiento.setText(cursor.getString(2))
+                binding.email.setText(cursor.getString(3))
+                binding.licenciaFecha.setText(cursor.getString(4))
+                idPerfil = cursor.getString(0)
+            }
+            con?.close()
+        }
+    }
+
+    private fun actualizarDatos(){
+        var con:SQLiteDatabase? = db!!.writableDatabase
+
+        if(binding.nombres.text.isNotEmpty() && binding.nacimiento.text.isNotEmpty() && binding.email.text.isNotEmpty() && binding.licenciaFecha.text.isNotEmpty()){
+            val values = ContentValues().apply {
+                put("Nombres", binding.nombres.text.toString())
+                put("FechaNacimiento", binding.nacimiento.text.toString())
+                put("Email", binding.email.text.toString())
+                put("FechaLicencia", binding.licenciaFecha.text.toString())
+            }
+            var actualizar = con!!.update("perfil", values, "Id_perfil = $idPerfil", null)
+
+            if(actualizar>0){
+                Toast.makeText(activity, "REGISTRO ACTUALIZADO.", Toast.LENGTH_LONG).show()
+            }
+            con.close()
+        }else{
+            Toast.makeText(activity,"Todos los campos son obligatorios",Toast.LENGTH_SHORT).show()
+        }
     }
 
     companion object {

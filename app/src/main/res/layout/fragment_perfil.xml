@@ -129,7 +129,7 @@
         <Button
             android:id="@+id/guardar"
             android:layout_width="wrap_content"
-            android:layout_height="38dp"
+            android:layout_height="40dp"
             android:layout_marginTop="64dp"
             android:hint="Guardar Registro Conductor"
             android:textColorHint="#000"
