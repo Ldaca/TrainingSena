@@ -12,6 +12,7 @@ import java.lang.Exception
 class SplashActivity : AppCompatActivity() {
     private val TAG: String = "SplashActivity"
     private lateinit var preferences : SharedPreferences
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         preferences = getSharedPreferences("Preferencias", Context.MODE_PRIVATE)

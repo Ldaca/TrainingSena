@@ -1,5 +1,6 @@
 package com.ldaca.app.prueba1.fragments
 
+import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.content.ContentValues
 import android.content.Context
@@ -74,10 +75,10 @@ class RegistroFragment : Fragment() {
     }
 
     private fun guardarVehiculos(){
-        var con =  db.writableDatabase
+        val con =  db.writableDatabase
 
         if(binding.placa.text.isNotEmpty() && binding.modelo.text.isNotEmpty() && binding.fecha.text.isNotEmpty()){
-            var values = ContentValues().apply {
+            val values = ContentValues().apply {
                 put("Marca", binding.marca.selectedItem.toString())
                 put("Color", binding.color.selectedItem.toString())
                 put("Placa", binding.placa.text.toString())
@@ -86,7 +87,7 @@ class RegistroFragment : Fragment() {
                 put("FechaSoat", binding.fecha.text.toString())
             }
 
-            var insertar = con.insert("tbl_regautos", null, values)
+            val insertar = con.insert("tbl_regautos", null, values)
 
             if(insertar>0){
                 Toast.makeText(activity, "REGISTRO EXITOSO", Toast.LENGTH_SHORT).show()
@@ -125,13 +126,14 @@ class RegistroFragment : Fragment() {
         return list
     }
 
+    @SuppressLint("Recycle")
     private fun getMarcasFromDB(): List<String>{
 
-        var list_marcas = ArrayList<String>()
+        val list_marcas = ArrayList<String>()
 
-        var con = db.readableDatabase
+        val con = db.readableDatabase
 
-        var cursor = con.rawQuery("SELECT * FROM tbl_marcautos", null)
+        val cursor = con.rawQuery("SELECT * FROM tbl_marcautos", null)
 
         while (cursor.moveToNext()){
             list_marcas.add(cursor.getString(1))
@@ -140,13 +142,14 @@ class RegistroFragment : Fragment() {
         return list_marcas
     }
 
+    @SuppressLint("Recycle")
     private fun getColoresFromDB(): List<String> {
 
-        var list_colores = ArrayList<String>()
+        val list_colores = ArrayList<String>()
 
-        var con = db.readableDatabase
+        val con = db.readableDatabase
 
-        var cursor = con.rawQuery("SELECT * FROM tbl_colores", null)
+        val cursor = con.rawQuery("SELECT * FROM tbl_colores", null)
 
         while (cursor.moveToNext()){
             list_colores.add(cursor.getString(1))
@@ -155,13 +158,14 @@ class RegistroFragment : Fragment() {
         return list_colores
     }
 
+    @SuppressLint("Recycle")
     private fun getCiudadesFromDB(): List<String> {
 
-        var list_ciudades = ArrayList<String>()
+        val list_ciudades = ArrayList<String>()
 
-        var con = db.readableDatabase
+        val con = db.readableDatabase
 
-        var cursor = con.rawQuery("SELECT * FROM tbl_ciudades", null)
+        val cursor = con.rawQuery("SELECT * FROM tbl_ciudades", null)
 
         while (cursor.moveToNext()){
             list_ciudades.add(cursor.getString(1))
