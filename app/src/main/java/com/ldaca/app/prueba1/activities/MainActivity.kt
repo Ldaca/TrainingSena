@@ -1,20 +1,23 @@
 package com.ldaca.app.prueba1.activities
 
+import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.MediaStore
 import android.view.MenuItem
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.widget.Toolbar
+import androidx.core.content.FileProvider
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
 import com.google.android.material.navigation.NavigationView
 import com.ldaca.app.prueba1.R
 import com.ldaca.app.prueba1.databinding.ActivityMainBinding
-import com.ldaca.app.prueba1.fragments.InicioFragment
-import com.ldaca.app.prueba1.fragments.PerfilFragment
-import com.ldaca.app.prueba1.fragments.RegistroFragment
-import com.ldaca.app.prueba1.fragments.ServiciosFragment
+import com.ldaca.app.prueba1.fragments.*
+import java.io.File
+import java.io.IOException
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
     private lateinit var binding: ActivityMainBinding
@@ -75,6 +78,11 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.id.perfil -> {
                 fragmentTransaction = true
                 fragment = PerfilFragment()
+                actionBar.title = item.title
+            }
+            R.id.acerca -> {
+                fragmentTransaction = true
+                fragment = AcercaDeFragment()
                 actionBar.title = item.title
             }
         }

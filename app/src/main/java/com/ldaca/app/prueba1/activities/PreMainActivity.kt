@@ -1,7 +1,9 @@
 package com.ldaca.app.prueba1.activities
 
 import android.content.ContentValues
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -12,9 +14,12 @@ import com.huawei.hms.support.hwid.service.HuaweiIdAuthService
 import com.ldaca.app.prueba1.databinding.ActivityMainPreBinding
 
 class PreMainActivity : AppCompatActivity() {
+
     private lateinit var binding: ActivityMainPreBinding
-    private val authParams : HuaweiIdAuthParams by lazy { HuaweiIdAuthParamsHelper(HuaweiIdAuthParams.DEFAULT_AUTH_REQUEST_PARAM)
-        .setIdToken().createParams() }
+    private lateinit var preferences : SharedPreferences
+
+    private val authParams : HuaweiIdAuthParams by lazy { HuaweiIdAuthParamsHelper(HuaweiIdAuthParams.DEFAULT_AUTH_REQUEST_PARAM).setIdToken().createParams() }
+
     private val service : HuaweiIdAuthService by lazy { HuaweiIdAuthManager.getService(this@PreMainActivity, authParams) }
 
     private lateinit var db:sqlite
@@ -26,10 +31,14 @@ class PreMainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainPreBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        preferences = getSharedPreferences("Preferencias", Context.MODE_PRIVATE)
+
         binding.signUp.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
+
         binding.sign1.setOnClickListener {
             startActivityForResult(service.signInIntent, 8888)
         }
@@ -77,39 +86,37 @@ class PreMainActivity : AppCompatActivity() {
     private fun guardarColores(){
         var con = db.writableDatabase
 
-        var values = ContentValues().apply {
-            for (i in colores){
+        for (i in colores){
+            var values = ContentValues().apply {
                 put("Color", i)
             }
+            con.insert("tbl_colores", null, values)
         }
-        Toast.makeText(this ,"guardados los colores", Toast.LENGTH_SHORT).show()
-        con.insert("tbl_colores", null, values)
         con.close()
     }
 
     private fun guardarMarcas(){
         var con = db.writableDatabase
 
-        var values = ContentValues().apply {
-            for (i in marcas){
+        for (i in marcas){
+            var values = ContentValues().apply {
                 put("Marca", i)
             }
+            con.insert("tbl_marcautos", null, values)
         }
-        Toast.makeText(this ,"guardados los marcas", Toast.LENGTH_SHORT).show()
-        con.insert("tbl_marcautos", null, values)
         con.close()
     }
 
     private fun guardarCiudades(){
         var con = db.writableDatabase
 
-        var values = ContentValues().apply {
-            for (i in ciudades){
-                put("Ciudad", i)
+        for (i in ciudades){
+            var values = ContentValues().apply {
+                    put("Ciudad", i)
             }
+            con.insert("tbl_ciudades", null, values)
         }
-        Toast.makeText(this ,"guardados los ciudades", Toast.LENGTH_SHORT).show()
-        con.insert("tbl_ciudades", null, values)
         con.close()
     }
+
 }

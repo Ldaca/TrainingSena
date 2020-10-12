@@ -38,18 +38,21 @@ class RegistroFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = FragmentRegistroBinding.inflate(layoutInflater, container, false)
 
+        //Inicializamos la base de datos
+        db = sqlite(activity, "tramiautos", null, 1)
+
         // Configuracion del Spinner de marca
-        val adapterMarca = ArrayAdapter(requireActivity(),R.layout.item_spinner, getMarcas())
+        val adapterMarca = ArrayAdapter(requireActivity(),R.layout.item_spinner, getMarcas(true))
         adapterMarca.setDropDownViewResource(R.layout.spinner_dropdown_item)
         binding.marca.adapter = adapterMarca
 
         // Configuracion del Spinner de color
-        val adapterColor = ArrayAdapter(requireActivity(),R.layout.item_spinner, getColores())
+        val adapterColor = ArrayAdapter(requireActivity(),R.layout.item_spinner, getColores(true))
         adapterColor.setDropDownViewResource(R.layout.spinner_dropdown_item)
         binding.color.adapter = adapterColor
 
         // Configuracion del Spinner de ciudad
-        val adapterCiudad = ArrayAdapter(requireActivity(),R.layout.item_spinner, getCiudades())
+        val adapterCiudad = ArrayAdapter(requireActivity(),R.layout.item_spinner, getCiudades(true))
         adapterCiudad.setDropDownViewResource(R.layout.spinner_dropdown_item)
         binding.ciudad.adapter = adapterCiudad
 
@@ -62,9 +65,6 @@ class RegistroFragment : Fragment() {
         binding.ibGetDate.setOnClickListener {
             getDate()
         }
-
-        //Inicializamos la base de datos
-        db = sqlite(activity, "tramiautos", null, 1)
 
         //Guadar registro de vehiculos
         binding.save.setOnClickListener {
