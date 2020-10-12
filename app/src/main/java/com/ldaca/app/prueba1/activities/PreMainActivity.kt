@@ -98,26 +98,26 @@ class PreMainActivity : AppCompatActivity() {
     private fun guardarColores(){
         var con = db.writableDatabase
 
-        var values = ContentValues().apply {
-            for (i in colores){
+        for (i in colores){
+            var values = ContentValues().apply {
                 put("Color", i)
             }
+            con.insert("tbl_colores", null, values)
+            Toast.makeText(this ,"guardados los colores", Toast.LENGTH_SHORT).show()
         }
-        Toast.makeText(this ,"guardados los colores", Toast.LENGTH_SHORT).show()
-        con.insert("tbl_colores", null, values)
         con.close()
     }
 
     private fun guardarMarcas(){
         var con = db.writableDatabase
 
-        var values = ContentValues().apply {
-            for (i in marcas){
+        for (i in marcas){
+            var values = ContentValues().apply {
                 put("Marca", i)
             }
+            con.insert("tbl_marcautos", null, values)
+            Toast.makeText(this ,"guardados los marcas", Toast.LENGTH_SHORT).show()
         }
-        Toast.makeText(this ,"guardados los marcas", Toast.LENGTH_SHORT).show()
-        con.insert("tbl_marcautos", null, values)
         con.close()
     }
 
@@ -143,13 +143,13 @@ class PreMainActivity : AppCompatActivity() {
     private fun guardarCiudades(){
         var con = db.writableDatabase
 
-        var values = ContentValues().apply {
-            for (i in ciudades){
+        for (i in ciudades){
+            var values = ContentValues().apply {
                 put("Ciudad", i)
             }
+            con.insert("tbl_ciudades", null, values)
+            Toast.makeText(this ,"guardados los ciudades", Toast.LENGTH_SHORT).show()
         }
-        Toast.makeText(this ,"guardados los ciudades", Toast.LENGTH_SHORT).show()
-        con.insert("tbl_ciudades", null, values)
         con.close()
     }
 
