@@ -39,7 +39,7 @@
             android:layout_width="280dp"
             android:layout_height="3dp"
             android:layout_gravity="center"
-            android:layout_marginTop="220dp"
+            android:layout_marginTop="240dp"
             android:background="@drawable/border_bottons"
             android:orientation="horizontal" />
 
@@ -49,7 +49,7 @@
             android:layout_height="120dp"
             android:gravity="center"
             android:layout_gravity="center"
-            android:layout_marginTop="270dp"
+            android:layout_marginTop="290dp"
             android:orientation="vertical">
 
             <TextView
