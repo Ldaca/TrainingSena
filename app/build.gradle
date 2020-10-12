@@ -3,6 +3,7 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'realm-android'
+apply plugin: 'com.huawei.agconnect'
 
 android {
     compileSdkVersion 30
@@ -18,12 +19,30 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    signingConfigs {
+        release {
+            storeFile file('huawei.jks')
+            keyAlias 'huawei'
+            keyPassword 'Diosmio77'
+            storePassword 'Diosmio'
+            v1SigningEnabled true
+            v2SigningEnabled true
+        }
+    }
+
     buildTypes {
         release {
+            signingConfig signingConfigs.release
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+
+        debug {
+            signingConfig signingConfigs.release
+            debuggable true
+        }
     }
+
     buildFeatures {
         viewBinding = true
     }

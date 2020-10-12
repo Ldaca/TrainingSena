@@ -1,28 +1,20 @@
 package com.ldaca.app.prueba1.fragments
 
 import android.annotation.SuppressLint
-import android.content.Context
-import android.content.SharedPreferences
-import android.os.Build
+import android.content.Intent
 import android.os.Bundle
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.annotation.RequiresApi
-import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.ldaca.app.prueba1.R
 import com.ldaca.app.prueba1.activities.Eventos
 import com.ldaca.app.prueba1.activities.adapterEventos
 import com.ldaca.app.prueba1.activities.sqlite
 import com.ldaca.app.prueba1.databinding.FragmentInicioBinding
-import java.text.SimpleDateFormat
-import java.time.LocalDate
-import java.time.Month
-import java.time.format.DateTimeFormatter
-import java.util.*
-import kotlin.collections.ArrayList
+import com.ldaca.app.prueba1.services.LicenciaService
 
 
 /**
@@ -40,12 +32,12 @@ class InicioFragment : Fragment() {
 
     private lateinit var db:sqlite
 
-    @RequiresApi(Build.VERSION_CODES.O)
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+    override fun onStart() {
+        super.onStart()
+//        serviceStart()
+    }
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
         binding = FragmentInicioBinding.inflate(layoutInflater, container, false)
 
@@ -56,11 +48,7 @@ class InicioFragment : Fragment() {
         preferences = activity?.getSharedPreferences("Preferencias", Context.MODE_PRIVATE)!!
 
         recyclerView_eventos = binding.recyclerEvents
-        recyclerView_eventos.layoutManager = LinearLayoutManager(
-            activity,
-            RecyclerView.VERTICAL,
-            false
-        )
+        recyclerView_eventos.layoutManager = LinearLayoutManager(activity, RecyclerView.VERTICAL, false)
 
         list_eventos = ArrayList()
 
@@ -78,22 +66,16 @@ class InicioFragment : Fragment() {
 
     }
 
+    @SuppressLint("Recycle")
     private fun consultarDatos(){
         val con = db.readableDatabase
 
         val cursor = con.rawQuery("SELECT * FROM tbl_regautos ORDER BY FechaSoat ASC", null)
 
         while(cursor.moveToNext()){
-            list_eventos.add(
-                Eventos(
-                    cursor.getString(1),
-                    cursor.getString(3),
-                    cursor.getString(6),
-                    "00/00/0000",
-                    "00/00/0000"
-                )
-            )
+            list_eventos.add(Eventos(cursor.getString(1), cursor.getString(3), cursor.getString(6), "00/00/0000", "00/00/0000"))
         }
+        con.close()
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
@@ -145,5 +127,19 @@ class InicioFragment : Fragment() {
 
     companion object {
 
+    }
+
+    private fun serviceStart() {
+        val intent = Intent(context, LicenciaService::class.java)
+        activity?.startService(intent)
+    }
+
+    private fun serviceStopt() {val intent = Intent(context, LicenciaService::class.java)
+        activity?.stopService(intent)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+//        serviceStopt()
     }
 }
