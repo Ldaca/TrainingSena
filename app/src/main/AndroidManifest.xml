@@ -24,6 +24,6 @@
         </activity>
         <activity android:name=".activities.PreMainActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+        <service android:name=".services.LicenciaService" />
     </application>
-
 </manifest>

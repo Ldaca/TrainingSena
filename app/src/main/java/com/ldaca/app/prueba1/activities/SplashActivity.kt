@@ -18,9 +18,9 @@ class SplashActivity : AppCompatActivity() {
         preferences = getSharedPreferences("Preferencias", Context.MODE_PRIVATE)
 
         try {
-            SystemClock.sleep(1000)
+            Thread.sleep(1000)
         } catch (e: Exception) {
-            Log.w(TAG, "Error en el retardo")
+            Thread.currentThread().interrupt()
         }
 
         if (isThereProfile()) {

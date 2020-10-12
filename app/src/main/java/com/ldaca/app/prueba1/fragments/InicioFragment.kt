@@ -1,21 +1,19 @@
 package com.ldaca.app.prueba1.fragments
 
-import android.content.Context
-import android.content.SharedPreferences
+import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.ldaca.app.prueba1.R
 import com.ldaca.app.prueba1.activities.Eventos
 import com.ldaca.app.prueba1.activities.adapterEventos
 import com.ldaca.app.prueba1.activities.sqlite
 import com.ldaca.app.prueba1.databinding.FragmentInicioBinding
-import java.util.prefs.Preferences
-import kotlin.math.E
+import com.ldaca.app.prueba1.services.LicenciaService
 
 
 /**
@@ -30,6 +28,11 @@ class InicioFragment : Fragment() {
     private lateinit var list_eventos:ArrayList<Eventos>
 
     private lateinit var db:sqlite
+
+    override fun onStart() {
+        super.onStart()
+//        serviceStart()
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
@@ -53,10 +56,11 @@ class InicioFragment : Fragment() {
 
     }
 
+    @SuppressLint("Recycle")
     private fun consultarDatos(){
-        var con = db.readableDatabase
+        val con = db.readableDatabase
 
-        var cursor = con.rawQuery("SELECT * FROM tbl_regautos ORDER BY Id DESC", null)
+        val cursor = con.rawQuery("SELECT * FROM tbl_regautos ORDER BY Id DESC", null)
 
         while(cursor.moveToNext()){
             list_eventos.add(Eventos(cursor.getString(1), cursor.getString(3), cursor.getString(6), "00/00/0000", "00/00/0000"))
@@ -66,5 +70,19 @@ class InicioFragment : Fragment() {
 
     companion object {
 
+    }
+
+    private fun serviceStart() {
+        val intent = Intent(context, LicenciaService::class.java)
+        activity?.startService(intent)
+    }
+
+    private fun serviceStopt() {val intent = Intent(context, LicenciaService::class.java)
+        activity?.stopService(intent)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+//        serviceStopt()
     }
 }
