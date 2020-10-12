@@ -1,12 +1,17 @@
 package com.ldaca.app.prueba1.fragments
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
+import android.os.Build
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.ldaca.app.prueba1.R
@@ -15,6 +20,11 @@ import com.ldaca.app.prueba1.activities.adapterEventos
 import com.ldaca.app.prueba1.activities.sqlite
 import com.ldaca.app.prueba1.databinding.FragmentInicioBinding
 import com.ldaca.app.prueba1.services.LicenciaService
+import java.text.SimpleDateFormat
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
+import java.util.*
+import kotlin.collections.ArrayList
 
 
 /**
@@ -37,6 +47,7 @@ class InicioFragment : Fragment() {
 //        serviceStart()
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
         binding = FragmentInicioBinding.inflate(layoutInflater, container, false)
