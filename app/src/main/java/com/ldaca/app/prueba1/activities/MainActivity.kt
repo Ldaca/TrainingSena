@@ -1,23 +1,21 @@
 package com.ldaca.app.prueba1.activities
 
+import android.content.BroadcastReceiver
+import android.content.Context
 import android.content.Intent
-import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
+import android.content.IntentFilter
 import android.os.Bundle
-import android.provider.MediaStore
 import android.view.MenuItem
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
-import androidx.core.content.FileProvider
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
 import com.google.android.material.navigation.NavigationView
 import com.ldaca.app.prueba1.R
 import com.ldaca.app.prueba1.databinding.ActivityMainBinding
 import com.ldaca.app.prueba1.fragments.*
-import java.io.File
-import java.io.IOException
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
     private lateinit var binding: ActivityMainBinding
@@ -30,7 +28,11 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setToolbar()
-        initDrawer();
+        initDrawer()
+        val receiver = MyReceiver()
+        val filter = IntentFilter()
+        filter.addAction("com.huawei.codelabpush.ON_NEW_TOKEN")
+        this@MainActivity.registerReceiver(receiver, filter)
     }
 
     private fun initDrawer() {
@@ -87,7 +89,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             }
         }
         if (fragmentTransaction) {
-            val transaction = supportFragmentManager.beginTransaction().replace(R.id.content_frame, fragment!!)
+            val transaction = supportFragmentManager.beginTransaction().replace(
+                R.id.content_frame,
+                fragment!!
+            )
             transaction.addToBackStack(null)
             transaction.commit()
         }
@@ -99,5 +104,15 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         actionBar = supportActionBar!!
         actionBar.setDisplayHomeAsUpEnabled(false)
         actionBar.title = getString(R.string.app_name)
+    }
+
+    inner class MyReceiver: BroadcastReceiver() {
+        override fun onReceive(p0: Context?, p1: Intent?) {
+            if ("com.huawei.codelabpush.ON_NEW_TOKEN" == intent.action) {
+                val token: String = intent.getStringExtra("token")!!
+                binding.content.tvToken.text = token
+            }
+        }
+
     }
 }

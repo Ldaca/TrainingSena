@@ -6,8 +6,11 @@ import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.TextUtils
 import android.util.Log
 import android.widget.Toast
+import com.huawei.agconnect.config.AGConnectServicesConfig
+import com.huawei.hms.aaid.HmsInstanceId
 import com.huawei.hms.common.ApiException
 import com.huawei.hms.support.hwid.HuaweiIdAuthManager
 import com.huawei.hms.support.hwid.request.HuaweiIdAuthParams
@@ -29,6 +32,7 @@ class PreMainActivity : AppCompatActivity() {
     lateinit var ciudades: ArrayList<String>
     lateinit var marcas: ArrayList<String>
     private val TAG: String = "PreMainActivity"
+    private var push = "No definidad"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -96,28 +100,29 @@ class PreMainActivity : AppCompatActivity() {
     }
 
     private fun guardarColores(){
-        var con = db.writableDatabase
+        val con = db.writableDatabase
 
         for (i in colores){
-            var values = ContentValues().apply {
+            val values = ContentValues().apply {
                 put("Color", i)
             }
             con.insert("tbl_colores", null, values)
-            Toast.makeText(this ,"guardados los colores", Toast.LENGTH_SHORT).show()
+
         }
+        Toast.makeText(this ,"guardados los colores", Toast.LENGTH_SHORT).show()
         con.close()
     }
 
     private fun guardarMarcas(){
-        var con = db.writableDatabase
+        val con = db.writableDatabase
 
         for (i in marcas){
-            var values = ContentValues().apply {
+            val values = ContentValues().apply {
                 put("Marca", i)
             }
             con.insert("tbl_marcautos", null, values)
-            Toast.makeText(this ,"guardados los marcas", Toast.LENGTH_SHORT).show()
         }
+        Toast.makeText(this ,"guardados los marcas", Toast.LENGTH_SHORT).show()
         con.close()
     }
 
@@ -129,8 +134,10 @@ class PreMainActivity : AppCompatActivity() {
             if (authHuaweiIdTask.isSuccessful) {
                 // The sign-in is successful, and the user's HUAWEI ID information and ID token are obtained.
                 val huaweiAccount = authHuaweiIdTask.result
-                Toast.makeText(this ,"Inicio de sesión", Toast.LENGTH_SHORT).show()
-                Log.i(TAG, "idToken:" + huaweiAccount.idToken)
+                val mToken = huaweiAccount.idToken
+                getToken()
+                Toast.makeText(this ,"Inicio de sesión: $push", Toast.LENGTH_LONG).show()
+                Log.i(TAG, "idToken: $mToken")
             } else {
                 // The sign-in failed. No processing is required. Logs are recorded to facilitate fault locating.
                 Toast.makeText(this ,"Falló al iniciar sesión", Toast.LENGTH_SHORT).show()
@@ -139,17 +146,36 @@ class PreMainActivity : AppCompatActivity() {
         }
     }
 
+    private fun getToken() {
+        val tokenThread = Thread {
+            var appId = ""
+            try {
+                appId = AGConnectServicesConfig.fromContext(applicationContext).getString("client/app_id")
+                val pushtoken = HmsInstanceId.getInstance(applicationContext).getToken(appId, "HCM")
+                if (!TextUtils.isEmpty(pushtoken)) {
+                    Log.i("GetToken", "push token:$pushtoken")
+                    push = appId
+                }
+            } catch (e: Exception) {
+                Log.e("Token Exception", "getToken failed, $e")
+                push = appId
+//                push = "Token Exception"
+            }
+        }
+        tokenThread.run()
+    }
+
 
     private fun guardarCiudades(){
-        var con = db.writableDatabase
+        val con = db.writableDatabase
 
         for (i in ciudades){
-            var values = ContentValues().apply {
+            val values = ContentValues().apply {
                 put("Ciudad", i)
             }
             con.insert("tbl_ciudades", null, values)
-            Toast.makeText(this ,"guardados los ciudades", Toast.LENGTH_SHORT).show()
         }
+        Toast.makeText(this ,"guardados los ciudades", Toast.LENGTH_SHORT).show()
         con.close()
     }
 
